@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bildbearbeitungswerkzeug (Beispiel)</title>
+    <!-- Verknüpfung mit externer CSS-Datei -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Bildbearbeitungswerkzeug (Beispiel)</h1>
+    </header>
+
+    <main>
+      <div class="editor-container">
+        <!-- Seitenleiste (sidebar) mit Steuerelementen -->
+        <div class="sidebar">
+          <h2>Funktionen</h2>
+
+          <!-- [17] Bild laden -->
+          <label for="fileInput">Bild laden:</label>
+          <input type="file" id="fileInput" accept="image/*" />
+
+          <!-- [1] Graustufen -->
+          <button id="btnGray">Graustufen</button>
+
+          <!-- [2] Schwarz-Weiß (Schwellwert) -->
+          <label for="bwThreshold">Schwellwert SW:</label>
+          <input type="range" id="bwThreshold" min="0" max="255" value="128" />
+          <button id="btnBinarize">Schwarz-Weiß</button>
+
+          <!-- [3] Helligkeitsänderung -->
+          <label for="brightStep">Helligkeit (+/-):</label>
+          <input type="number" id="brightStep" value="20" step="5" />
+          <button id="btnBrighten">Aufhellen</button>
+          <button id="btnDarken">Abdunkeln</button>
+
+          <!-- [4] Kontrast -->
+          <label for="contrastValue">Kontrast (+/-):</label>
+          <input type="number" id="contrastValue" value="1.2" step="0.1" />
+          <button id="btnContrast">Kontrast anwenden</button>
+
+          <!-- [5] RGB-Anpassung -->
+          <label for="redGain">Rot-Anteil:</label>
+          <input type="range" id="redGain" min="-100" max="100" value="0" />
+          <label for="greenGain">Grün-Anteil:</label>
+          <input type="range" id="greenGain" min="-100" max="100" value="0" />
+          <label for="blueGain">Blau-Anteil:</label>
+          <input type="range" id="blueGain" min="-100" max="100" value="0" />
+          <button id="btnColorAdjust">Farben anpassen</button>
+
+          <!-- [6] Negativ -->
+          <button id="btnNegative">Negativ</button>
+
+          <!-- [7] Rotation 90° -->
+          <button id="btnRotateCW">Rotation +90°</button>
+          <button id="btnRotateCCW">Rotation -90°</button>
+
+          <!-- [8] Spiegeln -->
+          <button id="btnFlipH">Horizontal spiegeln</button>
+          <button id="btnFlipV">Vertikal spiegeln</button>
+
+          <!-- [9] Skalierung (x2 / x0.5) mit/ohne Glättung -->
+          <button id="btnScaleUpNoSmooth">x2 (ohne Glättung)</button>
+          <button id="btnScaleDownNoSmooth">x0.5 (ohne Glättung)</button>
+          <button id="btnScaleUpSmooth">x2 (mit Glättung)</button>
+          <button id="btnScaleDownSmooth">x0.5 (mit Glättung)</button>
+
+          <!-- [10] Skalierung mit freiem Faktor -->
+          <label for="scaleFactor">Skalierungsfaktor:</label>
+          <input type="number" id="scaleFactor" value="1.5" step="0.1" />
+          <button id="btnScaleAny">Skalierung (Glättung)</button>
+
+          <!-- [11] Gauss-Filter 3x3, 5x5 -->
+          <button id="btnGauss3">Gauss 3x3</button>
+          <button id="btnGauss5">Gauss 5x5</button>
+
+          <!-- [12] Sobel-Kantenerkennung -->
+          <button id="btnSobel">Sobel-Filter</button>
+
+          <!-- [13] Histogramm -->
+          <button id="btnHistogram">Histogramm anzeigen</button>
+
+          <!-- [14] Reset -->
+          <button id="btnReset">Zurücksetzen</button>
+
+          <!-- [18] Speichern (Download) -->
+          <button id="btnSave">Bild speichern</button>
+        </div>
+
+        <!-- Hauptbereich (Canvas-Container) -->
+        <div class="canvas-container">
+          <canvas id="imageCanvas" width="400" height="300"></canvas>
+          <p>Haupt-Canvas: Vorschau und Bearbeitung</p>
+          <canvas id="histogramCanvas" width="400" height="100"></canvas>
+          <p>Zusätzlicher Canvas: RGB-Histogramm</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 – Beispiel-Implementierung – Mensch-Technik-Interaktion</p>
+    </footer>
+
+    <!-- Verknüpfung mit externer JS-Datei -->
+    <script src="script.js"></script>
+  </body>
+</html>
